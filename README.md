@@ -30,7 +30,7 @@
 </p>
 
 ### Contents
-* [Installation]( #installation )
+* [Installation](#installation)
 * [Usage](#usage)
 * [Contribute](https://finergy-rs.fr/charts/docs/contributing)
 * [Updates](#updates)
