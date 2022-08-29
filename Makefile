@@ -6,7 +6,7 @@ SRCDIR									= $(BASEDIR)/src
 DISTDIR									= $(BASEDIR)/dist
 DOCSDIR									= $(BASEDIR)/docs
 
-PROJECT									= frappe-charts
+PROJECT									= finergy-charts
 
 NODEMOD									= $(BASEDIR)/node_modules
 NODEBIN									= $(NODEMOD)/.bin

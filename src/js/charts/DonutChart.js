@@ -1,7 +1,6 @@
 import PieChart from './PieChart';
 import { getComponent } from '../objects/ChartComponents';
 import { makeArcStrokePathStr, makeStrokeCircleStr } from '../utils/draw';
-import { transform } from '../utils/animation';
 
 export default class DonutChart extends PieChart {
 	constructor(parent, args) {

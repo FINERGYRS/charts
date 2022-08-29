@@ -73,7 +73,7 @@ function getChartIntervals(maxValue, minValue = 0) {
 	return intervals;
 }
 
-export function calcChartIntervals(values, withMinimum = false, range = {}) {
+export function calcChartIntervals(values, withMinimum = false) {
 	//*** Where the magic happens ***
 
 	// Calculates best-fit y intervals from given values
@@ -81,14 +81,6 @@ export function calcChartIntervals(values, withMinimum = false, range = {}) {
 
 	let maxValue = Math.max(...values);
 	let minValue = Math.min(...values);
-
-	if (range.max !== undefined) {
-		maxValue = maxValue > range.max ? maxValue : range.max;
-	}
-	
-	if (range.min !== undefined) {
-		minValue = minValue < range.min ? minValue : range.min;
-	}
 
 	// Exponent to be used for pretty print
 	let exponent = 0, intervals = []; // eslint-disable-line no-unused-vars

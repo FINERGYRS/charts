@@ -156,7 +156,7 @@ export function makeGradient(svgDefElem, color, lighter = false) {
 	let gradientDef = renderVerticalGradient(svgDefElem, gradientId);
 	let opacities = [1, 0.6, 0.2];
 	if (lighter) {
-		opacities = [0.15, 0.05, 0];
+		opacities = [0.4, 0.05, 0];
 	}
 
 	setGradientStop(gradientDef, "0%", color, opacities[0]);
@@ -324,13 +324,7 @@ function makeVertLine(x, label, y1, y2, options = {}) {
 
 function makeHoriLine(y, label, x1, x2, options = {}) {
 	if (!options.lineType) options.lineType = '';
-	if (options.shortenNumbers) {
-		if (options.numberFormatter) {
-			label = options.numberFormatter(label);
-		} else {
-			label = shortenLargeNumber(label);
-		}
-	}
+	if (options.shortenNumbers) label = shortenLargeNumber(label);
 
 	let className = 'line-horizontal ' + options.className +
 		(options.lineType === "dashed" ? "dashed" : "");
@@ -397,8 +391,7 @@ export function yLine(y, label, width, options = {}) {
 	return makeHoriLine(y, label, x1, x2, {
 		className: options.className,
 		lineType: options.lineType,
-		shortenNumbers: options.shortenNumbers,
-		numberFormatter: options.numberFormatter,
+		shortenNumbers: options.shortenNumbers
 	});
 }
 
@@ -580,9 +573,9 @@ export function datasetBar(x, yTop, width, color, label = '', index = 0, offset 
 	}
 }
 
-export function datasetDot(x, y, radius, color, label = '', index = 0, hideDotBorder = false) {
+export function datasetDot(x, y, radius, color, label = '', index = 0) {
 	let dot = createSVG('circle', {
-		style: `fill: ${color}; ${hideDotBorder ? `stroke: ${color}`: ''}`,
+		style: `fill: ${color}`,
 		'data-point-index': index,
 		cx: x,
 		cy: y,

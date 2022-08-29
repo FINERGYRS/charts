@@ -125,12 +125,7 @@ let componentConfigs = {
 		makeElements(data) {
 			return data.positions.map((position, i) =>
 				yLine(position, data.labels[i], this.constants.width,
-					{
-						mode: this.constants.mode,
-						pos: this.constants.pos,
-						shortenNumbers: this.constants.shortenNumbers,
-						numberFormatter: this.constants.numberFormatter
-					})
+					{ mode: this.constants.mode, pos: this.constants.pos, shortenNumbers: this.constants.shortenNumbers })
 			);
 		},
 
@@ -389,7 +384,7 @@ let componentConfigs = {
 				);
 			}
 
-						this.units = [];
+			this.units = [];
 			if (c.showDots) {
 				this.units = data.yPositions.map((y, j) => {
 					return datasetDot(
@@ -398,25 +393,9 @@ let componentConfigs = {
 						data.radius,
 						c.color,
 						(c.valuesOverPoints ? data.values[j] : ''),
-						j,
-						c.hideDotBorder
+						j
 					);
 				});
-			}
-
-			if (c.trailingDot && !c.showDots) {
-				const lastIndex = data.yPositions.length - 1;
-				const dot = datasetDot(
-					data.xPositions[lastIndex],
-					data.yPositions[lastIndex],
-					data.radius,
-					c.color,
-					(c.valuesOverPoints ? data.values[lastIndex] : ''),
-					lastIndex,
-					c.hideDotBorder
-				);
-
-				this.units.push(dot);
 			}
 
 			return Object.values(this.paths).concat(this.units);

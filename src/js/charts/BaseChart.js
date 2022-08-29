@@ -38,7 +38,6 @@ export default class BaseChart {
 			showLegend: (typeof options.showLegend !== 'undefined') ? options.showLegend : 1,
 			isNavigable: options.isNavigable || 0,
 			animate: (typeof options.animate !== 'undefined') ? options.animate : 1,
-			disableEntryAnimation: options.disableEntryAnimation || 0,
 			truncateLegends: options.truncateLegends || 1
 		};
 
@@ -186,7 +185,7 @@ export default class BaseChart {
 
 		this.svg = makeSVGContainer(
 			this.container,
-			'frappe-chart chart',
+			'finergy-chart chart',
 			this.baseWidth,
 			this.baseHeight
 		);
@@ -239,11 +238,9 @@ export default class BaseChart {
 	update(data, drawing = false) {
 		if (!data) console.error('No data to update.');
 		if (!drawing) data = deepClone(data);
-		const animate = drawing ? !this.config.disableEntryAnimation : this.config.animate;
-		
 		this.data = this.prepareData(data);
 		this.calc(); // builds state
-		this.render(this.components, animate);
+		this.render(this.components, this.config.animate);
 	}
 
 	render(components = this.components, animate = true) {
