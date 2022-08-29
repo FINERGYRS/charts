@@ -1,10 +1,10 @@
 import * as Charts from './chart';
 
-let frappe     = { };
+let finergy     = { };
 
-frappe.NAME    = 'Frappe Charts';
-frappe.VERSION = '1.6.2';
+finergy.NAME    = 'Finergy Charts';
+finergy.VERSION = '1.6.2';
 
-frappe         = Object.assign({ }, frappe, Charts);
+finergy         = Object.assign({ }, finergy, Charts);
 
-export default frappe;
+export default finergy;
