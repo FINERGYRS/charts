@@ -5,7 +5,7 @@
     </a>
     <p align="center">
         <p>GitHub-inspired modern, intuitive and responsive charts with zero dependencies</p>
-        <a href="https://finergy-rs.fr/charts">
+        <a href="https://finergy-rs.fr/charts"> 
             <b>Explore Demos » </b>
         </a>
         <a href="https://codesandbox.io/s/finergy-charts-demo-viqud">
