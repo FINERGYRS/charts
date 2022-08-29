@@ -65,7 +65,8 @@ export const CHART_POST_ANIMATE_TIMEOUT = 400;
 export const DEFAULT_AXIS_CHART_TYPE = 'line';
 export const AXIS_DATASET_CHART_TYPES = ['line', 'bar'];
 
-export const AXIS_LEGEND_BAR_SIZE = 100;
+export const LEGEND_ITEM_WIDTH = 150;
+export const SERIES_LABEL_SPACE_RATIO = 0.6;
 
 export const BAR_CHART_SPACE_RATIO = 0.5;
 export const MIN_BAR_PERCENT_HEIGHT = 0.00;
@@ -73,8 +74,7 @@ export const MIN_BAR_PERCENT_HEIGHT = 0.00;
 export const LINE_CHART_DOT_SIZE = 4;
 export const DOT_OVERLAY_SIZE_INCR = 4;
 
-export const PERCENTAGE_BAR_DEFAULT_HEIGHT = 20;
-export const PERCENTAGE_BAR_DEFAULT_DEPTH = 2;
+export const PERCENTAGE_BAR_DEFAULT_HEIGHT = 16;
 
 // Fixed 5-color theme,
 // More colors are difficult to parse visually
@@ -85,10 +85,8 @@ export const HEATMAP_GUTTER_SIZE = 2;
 
 export const DEFAULT_CHAR_WIDTH = 7;
 
-export const TOOLTIP_POINTER_TRIANGLE_HEIGHT = 5;
-
-const DEFAULT_CHART_COLORS = ['light-blue', 'blue', 'violet', 'red', 'orange',
-	'yellow', 'green', 'light-green', 'purple', 'magenta', 'light-grey', 'dark-grey'];
+export const TOOLTIP_POINTER_TRIANGLE_HEIGHT = 7.48;
+const DEFAULT_CHART_COLORS = ['pink', 'blue', 'green', 'grey', 'red', 'yellow', 'purple', 'teal', 'cyan', 'orange'];
 const HEATMAP_COLORS_GREEN = ['#ebedf0', '#c6e48b', '#7bc96f', '#239a3b', '#196127'];
 export const HEATMAP_COLORS_BLUE = ['#ebedf0', '#c0ddf9', '#73b3f3', '#3886e1', '#17459e'];
 export const HEATMAP_COLORS_YELLOW = ['#ebedf0', '#fdf436', '#ffc700', '#ff9100', '#06001c'];

@@ -1,21 +1,27 @@
 const PRESET_COLOR_MAP = {
-	'light-blue': '#7cd6fd',
-	'blue': '#5e64ff',
-	'violet': '#743ee2',
-	'red': '#ff5858',
-	'orange': '#ffa00a',
-	'yellow': '#feef72',
-	'green': '#28a745',
-	'light-green': '#98d85b',
-	'purple': '#b554ff',
-	'magenta': '#ffa3ef',
-	'black': '#36114C',
-	'grey': '#bdd3e6',
-	'light-grey': '#f0f4f7',
-	'dark-grey': '#b8c2cc'
+	'pink': '#F683AE',
+	'blue': '#318AD8',
+	'green': '#48BB74',
+	'grey': '#A6B1B9',
+	'red': '#F56B6B',
+	'yellow': '#FACF7A',
+	'purple': '#44427B',
+	'teal': '#5FD8C4',
+	'cyan': '#15CCEF',
+	'orange': '#F8814F',
+	'light-pink': '#FED7E5',
+	'light-blue': '#BFDDF7',
+	'light-green': '#48BB74',
+	'light-grey': '#F4F5F6',
+	'light-red': '#F6DFDF',
+	'light-yellow': '#FEE9BF',
+	'light-purple': '#E8E8F7',
+	'light-teal': '#D3FDF6',
+	'light-cyan': '#DDF8FD',
+	'light-orange': '#FECDB8'
 };
 
-function limitColor(r){
+function limitColor(r) {
 	if (r > 255) return 255;
 	else if (r < 0) return 0;
 	return r;
@@ -28,11 +34,11 @@ export function lightenDarkenColor(color, amt) {
 		col = col.slice(1);
 		usePound = true;
 	}
-	let num = parseInt(col,16);
+	let num = parseInt(col, 16);
 	let r = limitColor((num >> 16) + amt);
 	let b = limitColor(((num >> 8) & 0x00FF) + amt);
 	let g = limitColor((num & 0x0000FF) + amt);
-	return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+	return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
 }
 
 export function isValidColor(string) {

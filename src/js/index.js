@@ -3,7 +3,7 @@ import * as Charts from './chart';
 let finergy     = { };
 
 finergy.NAME    = 'Finergy Charts';
-finergy.VERSION = '1.6.2';
+finergy.VERSION = '2.0.0-rc11';
 
 finergy         = Object.assign({ }, finergy, Charts);
 

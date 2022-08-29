@@ -1,5 +1,8 @@
 import { fillArray } from '../utils/helpers';
-import { DEFAULT_AXIS_CHART_TYPE, AXIS_DATASET_CHART_TYPES, DEFAULT_CHAR_WIDTH } from '../utils/constants';
+import {
+	DEFAULT_AXIS_CHART_TYPE, AXIS_DATASET_CHART_TYPES, DEFAULT_CHAR_WIDTH,
+	SERIES_LABEL_SPACE_RATIO
+} from '../utils/constants';
 
 export function dataPrep(data, type) {
 	data.labels = data.labels || [];
@@ -9,16 +12,16 @@ export function dataPrep(data, type) {
 	// Datasets
 	let datasets = data.datasets;
 	let zeroArray = new Array(datasetLength).fill(0);
-	if(!datasets) {
+	if (!datasets) {
 		// default
 		datasets = [{
 			values: zeroArray
 		}];
 	}
 
-	datasets.map(d=> {
+	datasets.map(d => {
 		// Set values
-		if(!d.values) {
+		if (!d.values) {
 			d.values = zeroArray;
 		} else {
 			// Check for non values
@@ -26,17 +29,19 @@ export function dataPrep(data, type) {
 			vals = vals.map(val => (!isNaN(val) ? val : 0));
 
 			// Trim or extend
-			if(vals.length > datasetLength) {
+			if (vals.length > datasetLength) {
 				vals = vals.slice(0, datasetLength);
 			} else {
 				vals = fillArray(vals, datasetLength - vals.length, 0);
 			}
-			d.values = vals;
 		}
 
+		// Set labels
+		//
+
 		// Set type
-		if(!d.chartType ) {
-			if(!AXIS_DATASET_CHART_TYPES.includes(type)) type = DEFAULT_AXIS_CHART_TYPE;
+		if (!d.chartType) {
+			if (!AXIS_DATASET_CHART_TYPES.includes(type)) type === DEFAULT_AXIS_CHART_TYPE;
 			d.chartType = type;
 		}
 
@@ -46,9 +51,9 @@ export function dataPrep(data, type) {
 
 	// Regions
 	// data.yRegions = data.yRegions || [];
-	if(data.yRegions) {
+	if (data.yRegions) {
 		data.yRegions.map(d => {
-			if(d.end < d.start) {
+			if (d.end < d.start) {
 				[d.start, d.end] = [d.end, d.start];
 			}
 		});
@@ -72,7 +77,7 @@ export function zeroDataPrep(realData) {
 		}),
 	};
 
-	if(realData.yMarkers) {
+	if (realData.yMarkers) {
 		zeroData.yMarkers = [
 			{
 				value: 0,
@@ -81,7 +86,7 @@ export function zeroDataPrep(realData) {
 		];
 	}
 
-	if(realData.yRegions) {
+	if (realData.yRegions) {
 		zeroData.yRegions = [
 			{
 				start: 0,
@@ -94,31 +99,37 @@ export function zeroDataPrep(realData) {
 	return zeroData;
 }
 
-export function getShortenedLabels(chartWidth, labels=[], isSeries=true) {
-	let allowedSpace = chartWidth / labels.length;
-	if(allowedSpace <= 0) allowedSpace = 1;
+export function getShortenedLabels(chartWidth, labels = [], isSeries = true) {
+	let allowedSpace = (chartWidth / labels.length) * SERIES_LABEL_SPACE_RATIO;
+	if (allowedSpace <= 0) allowedSpace = 1;
 	let allowedLetters = allowedSpace / DEFAULT_CHAR_WIDTH;
 
 	let seriesMultiple;
-	if(isSeries) {
+	if (isSeries) {
 		// Find the maximum label length for spacing calculations
 		let maxLabelLength = Math.max(...labels.map(label => label.length));
-		seriesMultiple = Math.ceil(maxLabelLength/allowedLetters);
+		seriesMultiple = Math.ceil(maxLabelLength / allowedLetters);
 	}
 
 	let calcLabels = labels.map((label, i) => {
 		label += "";
-		if(label.length > allowedLetters) {
+		if (label.length > allowedLetters) {
 
-			if(!isSeries) {
-				if(allowedLetters-3 > 0) {
-					label = label.slice(0, allowedLetters-3) + " ...";
+			if (!isSeries) {
+				if (allowedLetters - 3 > 0) {
+					label = label.slice(0, allowedLetters - 3) + " ...";
 				} else {
 					label = label.slice(0, allowedLetters) + '..';
 				}
 			} else {
-				if(i % seriesMultiple !== 0) {
-					label = "";
+				if (i % seriesMultiple !== 0) {
+					if (i !== (labels.length - 1)) {
+						label = "";
+					}
+				} else {
+					if (i > (labels.length - (seriesMultiple / 2))) {
+						label = "";
+					}
 				}
 			}
 		}
