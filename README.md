@@ -128,7 +128,7 @@ If you want to contribute:
 
 ##### v0.0.7
 - [Custom color values](https://github.com/finergyrs/charts/pull/71) for charts as hex codes. The API now takes an array of colors for all charts instead of a color for each dataset.
-- [@iamkdev's](https://github.com/iamkdev) blog on [usage with Angular](https://medium.com/@iamkdev/frappé-charts-with-angular-c9c5dd075d9f).
+- [@iamkdev's](https://github.com/iamkdev) blog on [usage with Angular](https://medium.com/@iamkdev/Finergy-charts-with-angular-c9c5dd075d9f).
 
 ##### v0.0.5
 - More [flexible Y values](https://github.com/finergyrs/charts/commit/3de049c451194dcd8e61ff91ceeb998ce131c709): independent from exponent, minimum Y axis point for line graphs.
@@ -150,6 +150,6 @@ If you want to contribute:
 This repository has been released under the [MIT License](LICENSE)
 
 ------------------
-Project maintained by [Finergy](https://finergy-rs.fr).
+Project maintained by [Finergy](https://finergy-rs.fr/).
 Used in [ERPNext](https://erpnext.com). Read the [blog post](https://medium.com/@pratu16x7/so-we-decided-to-create-our-own-charts-a95cb5032c97).
 
