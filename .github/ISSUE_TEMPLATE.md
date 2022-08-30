@@ -8,5 +8,5 @@
 
 NOTE: Add a GIF/Screenshot if required.
 
-Frappé Charts version:
+Finergy Charts version:
 Codepen / Codesandbox:
